@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import com.example.fulbomatchmaking.business.account.model.Account;
-import com.example.fulbomatchmaking.business.count.model.Count;
 
 
 @Repository
