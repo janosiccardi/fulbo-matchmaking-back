@@ -1,4 +1,4 @@
-package com.example.fulbomatchmaking.business.count.model;
+package com.example.fulbomatchmaking.business.account.model;
 
 import java.io.Serializable;
 
@@ -23,7 +23,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "cuenta")
 @Component
-public class Count implements Serializable {
+public class Account implements Serializable {
 
 	private static final long serialVersionUID = 6094407212788597216L;
 

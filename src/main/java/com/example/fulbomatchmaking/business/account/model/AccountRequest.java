@@ -1,11 +1,11 @@
-package com.example.fulbomatchmaking.business.count.model;
+package com.example.fulbomatchmaking.business.account.model;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CountRequest {
+public class AccountRequest {
 		private String us;
 		private String pass;
 	}
