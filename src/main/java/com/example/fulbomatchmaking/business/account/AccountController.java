@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.fulbomatchmaking.business.account.model.Account;
 import com.example.fulbomatchmaking.business.account.model.AccountRequest;
+import com.example.fulbomatchmaking.business.account.model.AccountTO;
 
 
 @CrossOrigin("*")
@@ -21,7 +22,7 @@ public class AccountController {
 		
 	
 	@PostMapping("/get")
-	public Account getAccount(@RequestBody AccountRequest request) {
+	public AccountTO getAccount(@RequestBody AccountRequest request) {
 		return service.getCount(request);
 	}
 	

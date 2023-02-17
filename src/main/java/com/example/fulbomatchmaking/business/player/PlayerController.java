@@ -26,7 +26,7 @@ public class PlayerController {
 	
 	
 	@GetMapping("/getPlayers")
-	public List<Player> getPlayers(@RequestParam(value = "id") int id) {
+	public List<Player> getPlayers(@RequestParam(value = "id") String id) {
 		return service.getPlayers(id);
 	}
 	
@@ -36,7 +36,7 @@ public class PlayerController {
 	}
 	
 	@PostMapping("/addPlayer")
-	public ResponseEntity<?> addPlayer(@RequestBody PlayerDE player) {
+	public ResponseEntity<?> addPlayer(@RequestBody Player player) {
 		try {
 			service.addPlayer(player);
 			return ResponseEntity.ok("Player added");
@@ -47,7 +47,7 @@ public class PlayerController {
 
 	
 	@PostMapping("/updatePlayer")
-	public void updatePlayer(@RequestBody PlayerDE player) {
+	public void updatePlayer(@RequestBody Player player) {
 		service.updatePlayer(player);
 	}
 }

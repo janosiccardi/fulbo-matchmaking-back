@@ -39,5 +39,6 @@ public class Player {
     private float composure;  
 
     private double overall;
+    private String cuenta;
 
 	}

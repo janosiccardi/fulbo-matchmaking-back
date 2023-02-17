@@ -11,6 +11,7 @@ import com.example.fulbomatchmaking.business.player.model.DeletePlayerRequest;
 import com.example.fulbomatchmaking.business.player.model.Player;
 import com.example.fulbomatchmaking.business.player.model.PlayerDE;
 import com.example.fulbomatchmaking.repositories.PlayerRepository;
+import com.example.utils.AES;
 
 import jakarta.transaction.Transactional;
 
@@ -21,19 +22,25 @@ public class PlayerService {
 	@Qualifier("playerRepository")
 	private PlayerRepository playerRepository;
 	
-	public List<Player> getPlayers(int id) {
-		List<PlayerDE> des = playerRepository.findByCuenta(id);
+	public List<Player> getPlayers(String id) {
+		String idS = AES.decrypt(id, "fmm2023");
+		int account = Integer.parseInt(idS);
+		List<PlayerDE> des = playerRepository.findByCuenta(account);
 		return PlayerMapper.mapTOList(des);
 	}
 	@Transactional
 	public void deletePlayer(DeletePlayerRequest request) {
-		playerRepository.deleteByNameAndCuenta(request.getPlayerName(), request.getId());
+		int account = Integer.parseInt(AES.decrypt(request.getId(), "fmm2023"));
+		playerRepository.deleteByNameAndCuenta(request.getPlayerName(), account);
 	}
 	@Transactional
-	public void addPlayer(PlayerDE player) throws Exception{
-		PlayerDE exist = playerRepository.findByNameAndCuenta(player.getName(), player.getCuenta());
+	public void addPlayer(Player player) throws Exception{
+		int account = Integer.parseInt(AES.decrypt(player.getCuenta(), "fmm2023"));
+		PlayerDE exist = playerRepository.findByNameAndCuenta(player.getName(), account);
 		if(exist == null) {
-		   playerRepository.save(player);
+			PlayerDE playerToSave = PlayerMapper.mapDE(player);
+			playerToSave.setCuenta(account);
+		   playerRepository.save(playerToSave);
 		}else {
 			throw new Exception("This player already exist!");
 		}
@@ -41,8 +48,11 @@ public class PlayerService {
 	
 
 	@Transactional
-	public void updatePlayer(PlayerDE player){
-		playerRepository.save(player);
+	public void updatePlayer(Player player){
+		int account = Integer.parseInt(AES.decrypt(player.getCuenta(), "fmm2023"));
+		PlayerDE playerToSave = PlayerMapper.mapDE(player);
+		playerToSave.setCuenta(account);
+		playerRepository.save(playerToSave);
 	}
 
 
