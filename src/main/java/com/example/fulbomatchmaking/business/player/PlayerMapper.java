@@ -28,27 +28,46 @@ public class PlayerMapper {
 		 to.setVision(de.getVision());
 		 to.setTechnique(de.getTechnique());
 		 to.setOverall(getOverall(to));
+		 to.setOverallSmp(de.getOverallSmp() != null ? de.getOverallSmp() : getOverall(to));
 		return to;
 
 	}
 	
-	public static PlayerDE mapDE(Player de) {
-		PlayerDE to = new PlayerDE();
-		 to.setName(de.getName());
-		 to.setFinishing(de.getFinishing());
-		 to.setPassing(de.getPassing());
-		 to.setDribbling(de.getDribbling());
-		 to.setDefending(de.getDefending());
-		 to.setSpeed(de.getSpeed());
-		 to.setStrength(de.getStrength());
-		 to.setStamina(de.getStamina());
-		 to.setAggression(de.getAggression());
-		 to.setComposure(de.getComposure());
-		 to.setPositioning(de.getPositioning());
-		 to.setVision(de.getVision());
-		 to.setTechnique(de.getTechnique());
-		return to;
+	public static PlayerDE mapDE(Player to) {
+		PlayerDE de = new PlayerDE();
+		 de.setName(to.getName());
+		 de.setFinishing(nullOrZero(to.getFinishing()));
+		 de.setPassing(nullOrZero(to.getPassing()));
+		 de.setDribbling(nullOrZero(to.getDribbling()));
+		 de.setDefending(nullOrZero(to.getDefending()));
+		 de.setSpeed(nullOrZero(to.getSpeed()));
+		 de.setStrength(nullOrZero(to.getStrength()));
+		 de.setStamina(nullOrZero(to.getStamina()));
+		 de.setAggression(nullOrZero(to.getAggression()));
+		 de.setComposure(nullOrZero(to.getComposure()));
+		 de.setPositioning(nullOrZero(to.getPositioning()));
+		 de.setVision(nullOrZero(to.getVision()));
+		 de.setTechnique(nullOrZero(to.getTechnique()));
+		 de.setOverallSmp(nullOrZero(to.getOverallSmp()));
+		return de;
 
+	}
+	
+	public static Double nullOrZero(Double valor) {
+		System.out.println(valor);
+		if(valor == 0.0) {
+			return null;
+		}else {
+			return valor;
+		}
+	}
+
+	public static float nullOrZero(float valor) {
+		if(valor > 0) {
+			return valor;
+		}else {
+			return 1;
+		}
 	}
 	
 	public static double getOverall(Player player) {		

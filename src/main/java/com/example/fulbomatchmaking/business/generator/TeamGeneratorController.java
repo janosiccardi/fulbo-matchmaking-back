@@ -2,7 +2,7 @@ package com.example.fulbomatchmaking.business.generator;
 
 import java.util.List;
 import org.springframework.http.MediaType;
-
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,7 +26,11 @@ public class TeamGeneratorController {
 	   @CrossOrigin
 	   @PostMapping("/generateTeams")
 	    public GenerateTeamsResponse create(@RequestBody GenerateTeamsRequest request) {		   	
-	        return service.generateTeams(request);
+		   try {
+	        return request.getPlayers().size() == 10 ? service.generateTeams(request) : service.generateTeams2(request);
+		   }catch(Exception e) {
+			  return null;
+		   }
 	    }
 	   
 }

@@ -12,4 +12,5 @@ import lombok.Setter;
 @Setter
 public class GenerateTeamsRequest {
 	private List<Player> players;
+	private boolean smpMode;
 }

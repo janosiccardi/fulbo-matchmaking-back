@@ -69,5 +69,8 @@ public class PlayerDE implements Serializable {
 	
 	@Column(name = "cuenta")
 	private int cuenta;
+	
+	@Column(name = "overall_smp")
+	private Double overallSmp;
 
 }
