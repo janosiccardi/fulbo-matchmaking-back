@@ -13,5 +13,6 @@ import lombok.Setter;
 public class GenerateTeamsResponse {
 	private List<Player> team1;
 	private List<Player> team2;
+	private Integer combinationQty;
 
 }

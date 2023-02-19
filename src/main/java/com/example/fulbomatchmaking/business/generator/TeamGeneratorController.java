@@ -27,8 +27,9 @@ public class TeamGeneratorController {
 	   @PostMapping("/generateTeams")
 	    public GenerateTeamsResponse create(@RequestBody GenerateTeamsRequest request) {		   	
 		   try {
-	        return request.getPlayers().size() == 10 ? service.generateTeams(request) : service.generateTeams2(request);
+	        return service.generateTeams(request);
 		   }catch(Exception e) {
+			   System.out.println(e.getMessage());
 			  return null;
 		   }
 	    }
