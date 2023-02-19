@@ -11,5 +11,6 @@ public class AccountTO{
 	private String us;
 	private String pass;
 	private String nickname;
+	private Boolean smpMode;
 
 }

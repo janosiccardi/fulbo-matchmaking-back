@@ -25,6 +25,15 @@ public class AccountService {
 		account.setPass(AES.encrypt(de.getPass()+"", "fmm2023"));
 		return account;
 	}
+
+
+	public AccountTO save(AccountTO account) {
+		Account de = AccountMapper.mapDe(account);
+		de.setId(Integer.parseInt(AES.decrypt(account.getId(), "fmm2023")));
+		de.setPass(AES.decrypt(account.getPass()+"", "fmm2023"));
+		de = accountRepository.save(de);
+		return AccountMapper.mapTo(de);
+	}
 	
 
 

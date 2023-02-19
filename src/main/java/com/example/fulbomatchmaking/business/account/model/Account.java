@@ -39,5 +39,8 @@ public class Account implements Serializable {
 	
 	@Column(name = "nickname")
 	private String nickname;
+	
+	@Column(name = "smp_mode")
+	private Boolean smpMode;
 
 }
