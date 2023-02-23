@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication()
-@EntityScan("com.example.fulbomatchmaking.business")
+@EntityScan("com.example.fulbomatchmaking.business.account.model")
 public class FulboMatchmakingApplication {
 
 	public static void main(String[] args) {
