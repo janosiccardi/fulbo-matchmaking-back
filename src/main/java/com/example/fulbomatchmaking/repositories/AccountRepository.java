@@ -7,12 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.example.fulbomatchmaking.business.account.model.AccountDE;
+import com.example.fulbomatchmaking.business.account.model.Account;
 
 
 @Repository
-public interface AccountRepository extends JpaRepository<AccountDE, Long>, JpaSpecificationExecutor<AccountDE> {
-	AccountDE findByUsAndPass(String us, String pass);
+public interface AccountRepository extends JpaRepository<Account, Long>, JpaSpecificationExecutor<Account> {
+	Account findByUsAndPass(String us, String pass);
 	
 	@Modifying(clearAutomatically = true)
 	@Query(value = "update `cuenta` set `smp_mode` = :smpMode \n"
