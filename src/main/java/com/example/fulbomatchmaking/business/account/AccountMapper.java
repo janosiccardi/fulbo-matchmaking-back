@@ -1,11 +1,11 @@
 package com.example.fulbomatchmaking.business.account;
 
-import com.example.fulbomatchmaking.business.account.model.Account;
+import com.example.fulbomatchmaking.business.account.model.AccountDE;
 import com.example.fulbomatchmaking.business.account.model.AccountTO;
 
 public class AccountMapper {
 
-	public static AccountTO mapTo(Account de) {
+	public static AccountTO mapTo(AccountDE de) {
 		AccountTO to = new AccountTO();
 		to.setNickname(de.getNickname());
 		to.setUs(de.getUs());
@@ -13,8 +13,8 @@ public class AccountMapper {
 		return to;
 	}
 
-	public static Account mapDe(AccountTO to) {
-		Account de = new Account();
+	public static AccountDE mapDe(AccountTO to) {
+		AccountDE de = new AccountDE();
 		de.setNickname(to.getNickname());
 		de.setUs(to.getUs());
 		de.setSmpMode(to.getSmpMode());

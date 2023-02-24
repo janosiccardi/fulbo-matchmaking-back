@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.fulbomatchmaking.business.account.model.Account;
+import com.example.fulbomatchmaking.business.account.model.AccountDE;
 import com.example.fulbomatchmaking.business.account.model.AccountRequest;
 import com.example.fulbomatchmaking.business.account.model.AccountTO;
 import com.example.fulbomatchmaking.business.account.model.SaveModeRequest;
