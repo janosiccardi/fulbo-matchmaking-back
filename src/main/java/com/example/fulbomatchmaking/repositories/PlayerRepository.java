@@ -11,11 +11,11 @@ import com.example.fulbomatchmaking.business.player.model.PlayerDE;
 
 
 @Repository
-public interface PlayerRepository extends JpaRepository<PlayerDE, Long>, JpaSpecificationExecutor<PlayerDE> {
+public interface PlayerRepository extends JpaRepository<PlayerDE, String>, JpaSpecificationExecutor<PlayerDE> {
 	List<PlayerDE> findByCuenta(int cuenta);
 	
-	void deleteByNameAndCuenta(String name, int cuenta);
+	void deleteByNameAndCuenta(String name, Integer cuenta);
 	
-	PlayerDE findByNameAndCuenta(String name, int cuenta);
+	PlayerDE findByNameAndCuenta(String name, Integer cuenta);
 
 }

@@ -26,15 +26,28 @@ public class TeamGeneratorService {
 						if (size != 8) {
 							for (int m = l + 1; m < size; m++) {
 								if (size != 10) {
-									for (int n = l + 1; n < size; n++) {
-										calculateCombinations(request, players, combinations, i, j, k, l, m, n);
+									for (int n = m + 1; n < size; n++) {
+										if(size != 12) {
+											for (int o = n + 1; o < size; o++) {
+												if(size != 14) {
+													for (int p = o + 1; p < size; o++) {
+														calculateCombinations(request, players, combinations, i, j, k, l, m, n, o, p);		
+													}
+													
+												}else {
+													calculateCombinations(request, players, combinations, i, j, k, l, m, n, o, null);		
+												}
+											}											
+										}else {
+											calculateCombinations(request, players, combinations, i, j, k, l, m, n, null, null);
+										}
 									}
 								} else {
-									calculateCombinations(request, players, combinations, i, j, k, l, m, null);
+									calculateCombinations(request, players, combinations, i, j, k, l, m, null, null, null);
 								}
 							}
 						} else {
-							calculateCombinations(request, players, combinations, i, j, k, l, null, null);
+							calculateCombinations(request, players, combinations, i, j, k, l, null, null, null, null);
 						}
 					}
 				}
@@ -51,7 +64,7 @@ public class TeamGeneratorService {
 
 	private void calculateCombinations(GenerateTeamsRequest request, List<Player> players,
 			Map<List<Player>, List<Player>> combinations, Integer i, Integer j, Integer k, Integer l, Integer m,
-			Integer n) {
+			Integer n, Integer o, Integer p) {
 		List<Player> group1 = new ArrayList<>();
 		group1.add(players.get(i));
 		group1.add(players.get(j));
@@ -63,7 +76,13 @@ public class TeamGeneratorService {
 		if (n != null) {
 			group1.add(players.get(n));
 		}
-		List<Player> group2 = players.stream().filter(p -> !group1.contains(p)).collect(Collectors.toList());
+		if (o != null) {
+			group1.add(players.get(o));
+		}
+		if (p != null) {
+			group1.add(players.get(p));
+		}
+		List<Player> group2 = players.stream().filter(z -> !group1.contains(z)).collect(Collectors.toList());
 		double group1Score = getAverage(group1, request.isSmpMode());
 		double group2Score = getAverage(group2, request.isSmpMode());
 		if (Math.abs(group1Score - group2Score) <= 1) {

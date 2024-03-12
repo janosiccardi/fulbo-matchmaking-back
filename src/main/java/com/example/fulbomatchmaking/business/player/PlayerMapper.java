@@ -71,9 +71,9 @@ public class PlayerMapper {
 	}
 	
 	public static double getOverall(Player player) {		
-	    return (((player.getFinishing() * 10 + player.getPassing() * 8 + player.getDribbling() * 10 + player.getDefending() * 7 + 
-	      player.getSpeed() * 5 + player.getStrength() * 6 + player.getStamina() * 9 + player.getAggression() * 2 + player.getComposure() * 5 + 
-	      player.getPositioning() * 9 + player.getVision() * 7 + player.getTechnique() * 8) / 12) / 10) + 29;
+	    return (((player.getFinishing() * 10 + player.getPassing() * 8 + player.getDribbling() * 10 + player.getDefending() * 9 + 
+	      player.getSpeed() * 5 + player.getStrength() * 6 + player.getStamina() * 8 + player.getAggression() * 1 + player.getComposure() * 5 + 
+	      player.getPositioning() * 9 + player.getVision() * 7 + player.getTechnique() * 7) / 12) / 10) + 29;
 	  }
 
 }

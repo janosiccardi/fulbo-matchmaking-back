@@ -2,13 +2,13 @@ package com.example.fulbomatchmaking.business.account.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "cuenta")
+@Table(name = "account")
 @Component
 public class Account implements Serializable {
 
@@ -29,7 +29,7 @@ public class Account implements Serializable {
 
 	@Id
 	@Column(name = "id", nullable = false)
-	private int id;
+	private Integer id;
 	
 	@Column(name = "us")
 	private String us;

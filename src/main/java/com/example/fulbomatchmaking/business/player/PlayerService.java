@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.fulbomatchmaking.business.player.model.DeletePlayerRequest;
 import com.example.fulbomatchmaking.business.player.model.Player;
@@ -13,8 +14,9 @@ import com.example.fulbomatchmaking.business.player.model.PlayerDE;
 import com.example.fulbomatchmaking.repositories.PlayerRepository;
 import com.example.utils.AES;
 
-import jakarta.transaction.Transactional;
 
+
+@Transactional
 @Service
 public class PlayerService {
 	
