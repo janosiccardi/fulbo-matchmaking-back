@@ -28,8 +28,8 @@ options:
   logging: NONE
 substitutions:
   _AR_HOSTNAME: gcr.io
-  _SERVICE_NAME: fulbo-matchmaking
-  REPO_NAME: fulbo-matchmaking
+  _SERVICE_NAME: fulbo-matchmaking-back
+  REPO_NAME: fulbo-matchmaking-back
   _DEPLOY_REGION: southamerica-east1
 tags:
   - fulbo-matchmaking
