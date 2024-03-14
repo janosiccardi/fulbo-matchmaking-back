@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.fulbomatchmaking.business.player.model.DeletePlayerRequest;
 import com.example.fulbomatchmaking.business.player.model.Player;
-import com.example.fulbomatchmaking.business.player.model.PlayerDE;
 
 @CrossOrigin("*")
 @RestController
@@ -23,18 +22,18 @@ public class PlayerController {
 
 	@Autowired
 	private PlayerService service;
-	
-	
+
+
 	@GetMapping("/getPlayers")
-	public List<Player> getPlayers(@RequestParam(value = "id") String id) {
+	public List<Player> getPlayers(@RequestParam(value = "id") Integer id) {
 		return service.getPlayers(id);
 	}
-	
+
 	@PostMapping("/deletePlayer")
 	public void deletePlayer(@RequestBody DeletePlayerRequest request) {
 		service.deletePlayer(request);
 	}
-	
+
 	@PostMapping("/addPlayer")
 	public ResponseEntity<?> addPlayer(@RequestBody Player player) {
 		try {
@@ -45,7 +44,7 @@ public class PlayerController {
 		}
 	}
 
-	
+
 	@PostMapping("/updatePlayer")
 	public void updatePlayer(@RequestBody Player player) {
 		service.updatePlayer(player);

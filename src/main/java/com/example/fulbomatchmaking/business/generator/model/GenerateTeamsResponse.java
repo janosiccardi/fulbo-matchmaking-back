@@ -1,7 +1,6 @@
 package com.example.fulbomatchmaking.business.generator.model;
 
 import java.util.List;
-import java.util.Map;
 
 import com.example.fulbomatchmaking.business.player.model.Player;
 

@@ -30,17 +30,20 @@ public class Account implements Serializable {
 	@Id
 	@Column(name = "id", nullable = false)
 	private Integer id;
-	
+
 	@Column(name = "us")
 	private String us;
-	
+
 	@Column(name = "pass")
 	private String pass;
-	
+
 	@Column(name = "nickname")
 	private String nickname;
-	
+
 	@Column(name = "smp_mode")
 	private Boolean smpMode;
+
+	@Column(name = "teams")
+	private String teams;
 
 }

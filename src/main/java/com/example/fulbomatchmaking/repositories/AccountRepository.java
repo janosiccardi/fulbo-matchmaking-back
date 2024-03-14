@@ -13,7 +13,7 @@ import com.example.fulbomatchmaking.business.account.model.Account;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer>, JpaSpecificationExecutor<Account> {
 	Account findByUsAndPass(String us, String pass);
-	
+
 	@Modifying(clearAutomatically = true)
 	@Query(value = "update `cuenta` set `smp_mode` = :smpMode \n"
 			+ "WHERE `ID` = :account ", nativeQuery = true)

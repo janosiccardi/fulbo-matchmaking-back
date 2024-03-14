@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DeletePlayerRequest {
-		private String id;
+		private Integer team;
 		private String playerName;
 	}

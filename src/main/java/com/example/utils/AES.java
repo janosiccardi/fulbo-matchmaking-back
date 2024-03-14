@@ -92,11 +92,13 @@ public class AES {
 			while (generatedLength < keyLength + ivLength) {
 
 				// Digest data (last digest if available, password data, salt if available)
-				if (generatedLength > 0)
+				if (generatedLength > 0) {
 					md.update(generatedData, generatedLength - digestLength, digestLength);
+				}
 				md.update(password);
-				if (salt != null)
+				if (salt != null) {
 					md.update(salt, 0, 8);
+				}
 				md.digest(generatedData, generatedLength, digestLength);
 
 				// additional rounds
@@ -111,8 +113,9 @@ public class AES {
 			// Copy key and IV into separate byte arrays
 			byte[][] result = new byte[2][];
 			result[0] = Arrays.copyOfRange(generatedData, 0, keyLength);
-			if (ivLength > 0)
+			if (ivLength > 0) {
 				result[1] = Arrays.copyOfRange(generatedData, keyLength, keyLength + ivLength);
+			}
 
 			return result;
 

@@ -1,6 +1,5 @@
 package com.example.fulbomatchmaking.business.player.model;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,13 +16,13 @@ public class Player {
 	}
 
 	private String name;
-    
-    //Attacking 
+
+    //Attacking
     private float finishing;
     private float passing;
     private float technique;
 
-    //Skill 
+    //Skill
     private float dribbling;
     private float speed;
     private float strength;
@@ -33,13 +32,13 @@ public class Player {
     private float aggression;
     private float stamina;
 
-    //Mentallity  
+    //Mentallity
     private float positioning;
     private float vision;
-    private float composure;  
+    private float composure;
 
     private double overall;
     private double overallSmp;
-    private String cuenta;
+    private Integer team;
 
 	}

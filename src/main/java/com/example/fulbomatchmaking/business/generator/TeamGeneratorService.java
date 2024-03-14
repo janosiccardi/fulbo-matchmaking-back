@@ -31,13 +31,13 @@ public class TeamGeneratorService {
 											for (int o = n + 1; o < size; o++) {
 												if(size != 14) {
 													for (int p = o + 1; p < size; o++) {
-														calculateCombinations(request, players, combinations, i, j, k, l, m, n, o, p);		
+														calculateCombinations(request, players, combinations, i, j, k, l, m, n, o, p);
 													}
-													
+
 												}else {
-													calculateCombinations(request, players, combinations, i, j, k, l, m, n, o, null);		
+													calculateCombinations(request, players, combinations, i, j, k, l, m, n, o, null);
 												}
-											}											
+											}
 										}else {
 											calculateCombinations(request, players, combinations, i, j, k, l, m, n, null, null);
 										}

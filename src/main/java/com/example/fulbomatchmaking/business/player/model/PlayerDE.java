@@ -2,14 +2,13 @@ package com.example.fulbomatchmaking.business.player.model;
 
 import java.io.Serializable;
 
-
-import org.springframework.stereotype.Component;
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,7 +30,7 @@ public class PlayerDE implements Serializable {
 	@Id
 	@Column(name = "name", nullable = false)
 	private String name;
-	
+
 	@Column(name = "finishing")
 	private float finishing;
 
@@ -42,11 +41,11 @@ public class PlayerDE implements Serializable {
 	private float dribbling;
 
 	@Column(name = "defending")
-	private float defending; 
-	 
+	private float defending;
+
 	@Column(name = "speed")
-	private float speed; 
-	 
+	private float speed;
+
 	@Column(name = "strength")
 	private float strength;
 
@@ -67,10 +66,10 @@ public class PlayerDE implements Serializable {
 
 	@Column(name = "technique")
 	private float technique;
-	
-	@Column(name = "account")
-	private int cuenta;
-	
+
+	@Column(name = "team")
+	private int team;
+
 	@Column(name = "overall_smp")
 	private Double overallSmp;
 
