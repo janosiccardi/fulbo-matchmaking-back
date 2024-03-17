@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.example.fulbomatchmaking.business.player.model.Player;
 import com.example.fulbomatchmaking.business.player.model.PlayerDE;
+import com.example.fulbomatchmaking.repositories.keys.PlayerCompKey;
 
 public class PlayerMapper {
 
@@ -14,7 +15,7 @@ public class PlayerMapper {
 
 	public static Player mapTO(PlayerDE de) {
 		Player to = new Player();
-		 to.setName(de.getName());
+		 to.setName(de.getId().getName());
 		 to.setFinishing(de.getFinishing());
 		 to.setPassing(de.getPassing());
 		 to.setDribbling(de.getDribbling());
@@ -28,7 +29,7 @@ public class PlayerMapper {
 		 to.setVision(de.getVision());
 		 to.setTechnique(de.getTechnique());
 		 to.setOverall(getOverall(to));
-		 to.setTeam(de.getTeam());
+		 to.setTeam(de.getId().getTeam());
 		 to.setOverallSmp(de.getOverallSmp() != null ? de.getOverallSmp() : getOverall(to));
 		return to;
 
@@ -36,7 +37,10 @@ public class PlayerMapper {
 
 	public static PlayerDE mapDE(Player to) {
 		PlayerDE de = new PlayerDE();
-		 de.setName(to.getName());
+		PlayerCompKey key = new PlayerCompKey();
+		key.setName(to.getName());
+		key.setTeam(to.getTeam());		
+		de.setId(key);
 		 de.setFinishing(nullOrZero(to.getFinishing()));
 		 de.setPassing(nullOrZero(to.getPassing()));
 		 de.setDribbling(nullOrZero(to.getDribbling()));
@@ -50,7 +54,6 @@ public class PlayerMapper {
 		 de.setVision(nullOrZero(to.getVision()));
 		 de.setTechnique(nullOrZero(to.getTechnique()));
 		 de.setOverallSmp(nullOrZero(to.getOverallSmp()));
-		 de.setTeam(to.getTeam());
 		return de;
 
 	}
@@ -73,9 +76,9 @@ public class PlayerMapper {
 	}
 
 	public static double getOverall(Player player) {
-	    return (((player.getFinishing() * 10 + player.getPassing() * 8 + player.getDribbling() * 10 + player.getDefending() * 9 +
-	      player.getSpeed() * 5 + player.getStrength() * 6 + player.getStamina() * 8 + player.getAggression() * 1 + player.getComposure() * 5 +
-	      player.getPositioning() * 9 + player.getVision() * 7 + player.getTechnique() * 7) / 12) / 10) + 29;
+	    return (((player.getFinishing() * 10 + player.getPassing() * 8 + player.getDribbling() * 9 + player.getDefending() * 9 +
+	      player.getSpeed() * 5 + player.getStrength() * 6 + player.getStamina() * 6 + player.getAggression() * 1 + player.getComposure() * 5 +
+	      player.getPositioning() * 9 + player.getVision() * 7 + player.getTechnique() * 7) / 12) / 10) + 31.3;
 	  }
 
 }

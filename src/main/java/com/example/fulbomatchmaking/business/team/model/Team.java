@@ -30,5 +30,8 @@ public class Team{
 
 	@Column(name = "associated_users")
 	private String associated_users;
+	
+	@Column(name = "admins")
+	private String admins;
 
 }

@@ -3,11 +3,16 @@ package com.example.fulbomatchmaking.business.player.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
+
+import com.example.fulbomatchmaking.repositories.keys.PlayerCompKey;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,10 +31,16 @@ import lombok.Setter;
 public class PlayerDE implements Serializable {
 
 	private static final long serialVersionUID = 6094407212788597216L;
+	
+	@EmbeddedId PlayerCompKey id;
 
-	@Id
-	@Column(name = "name", nullable = false)
+
+	
+	@Column(name = "name", nullable = false,insertable=false, updatable=false)
 	private String name;
+	
+	@Column(name = "team", nullable = false,insertable=false, updatable=false)
+	private int team;
 
 	@Column(name = "finishing")
 	private float finishing;
@@ -66,9 +77,6 @@ public class PlayerDE implements Serializable {
 
 	@Column(name = "technique")
 	private float technique;
-
-	@Column(name = "team")
-	private int team;
 
 	@Column(name = "overall_smp")
 	private Double overallSmp;

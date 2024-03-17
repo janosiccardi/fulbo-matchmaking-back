@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import com.example.fulbomatchmaking.business.account.model.Account;
 import com.example.fulbomatchmaking.business.account.model.AccountRequest;
 import com.example.fulbomatchmaking.business.account.model.AccountTO;
+import com.example.fulbomatchmaking.business.team.model.Team;
 import com.example.fulbomatchmaking.repositories.AccountRepository;
+import com.example.fulbomatchmaking.repositories.TeamRepository;
 import com.example.utils.AES;
 
 @Service
@@ -18,12 +20,17 @@ public class AccountService {
 
 	@Autowired
 	private AccountRepository accountRepository;
+	
+	@Autowired
+	private TeamRepository teamRepository;
 
 
-	public AccountTO getCount(AccountRequest request) {
+	public AccountTO getAccount(AccountRequest request) {
 		String pass = AES.decryptText(request.getPass(), "fmm2023");
 		Account de = accountRepository.findByUsAndPass(request.getUs(), pass);
 		AccountTO to = AccountMapper.mapTo(de);
+		List<Team> teams = this.teamRepository.findAllById(to.getGroups());
+		to.setTeams(teams);
 		to.setPass(AES.encrypt(de.getPass()+"", "fmm2023"));
 		return to;
 	}
@@ -52,8 +59,8 @@ public class AccountService {
 	public void deleteUserOfTeam(Integer user, Long team) throws Exception {
 		Account exist = accountRepository.getById(user);
 		if(exist != null) {
-			List<Integer> groups = AccountMapper.mapTo(exist).getTeams();
-			groups.removeAll(Arrays.asList(Integer.valueOf(team.intValue())));
+			List<Long> groups = AccountMapper.mapTo(exist).getGroups();
+			groups.removeAll(Arrays.asList(Integer.valueOf(team.intValue()).longValue()));
 			String grp = groups.toString().trim().replace(" ","").replace("]", "").replace("[", "");
 			exist.setTeams(grp);
 			accountRepository.save(exist);

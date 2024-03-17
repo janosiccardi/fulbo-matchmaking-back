@@ -15,13 +15,13 @@ public class AccountMapper {
 		to.setNickname(de.getNickname());
 		to.setUs(de.getUs());
 		to.setPass(de.getPass());
-		List<Integer> groups = new ArrayList<>();
+		List<Long> groups = new ArrayList<>();
 		Arrays.asList(de.getTeams().split(",")).stream().forEach(e->{
 			if(e != null && e.trim() != "") {
-				groups.add(Integer.valueOf(e.trim()));
+				groups.add(Integer.valueOf(e.trim()).longValue());
 			}
 		});
-		to.setTeams(groups);
+		to.setGroups(groups);
 		to.setSmpMode(de.getSmpMode());
 		return to;
 	}

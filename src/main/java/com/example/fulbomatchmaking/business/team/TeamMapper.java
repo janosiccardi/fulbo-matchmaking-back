@@ -20,6 +20,13 @@ public class TeamMapper {
 			}
 		});
 		to.setAssociatedUsers(users);
+		List<Integer> admins = new ArrayList<>();
+		Arrays.asList(de.getAdmins().split(",")).stream().forEach(e->{
+			if(e != null && e.trim() != "") {
+				admins.add(Integer.valueOf(e.trim()));
+			}
+		});
+		to.setAdmins(admins);
 		return to;
 	}
 
@@ -30,6 +37,10 @@ public class TeamMapper {
 		if(to.getAssociatedUsers() != null && !to.getAssociatedUsers().isEmpty()) {
 			String str = to.getAssociatedUsers().toString().trim().replace(" ","").replace("]", "").replace("[", "");
 			de.setAssociated_users(str);
+		}
+		if(to.getAdmins() != null && !to.getAdmins().isEmpty()) {
+			String str2 = to.getAdmins().toString().trim().replace(" ","").replace("]", "").replace("[", "");
+			de.setAdmins(str2);
 		}
 		return de;
 	}

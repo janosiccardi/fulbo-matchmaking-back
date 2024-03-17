@@ -7,10 +7,11 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import com.example.fulbomatchmaking.business.player.model.PlayerDE;
+import com.example.fulbomatchmaking.repositories.keys.PlayerCompKey;
 
 
 @Repository
-public interface PlayerRepository extends JpaRepository<PlayerDE, String>, JpaSpecificationExecutor<PlayerDE> {
+public interface PlayerRepository extends JpaRepository<PlayerDE, PlayerCompKey>, JpaSpecificationExecutor<PlayerDE> {
 	List<PlayerDE> findByTeam(int group);
 
 	void deleteByNameAndTeam(String name, Integer team);

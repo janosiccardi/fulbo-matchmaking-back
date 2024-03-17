@@ -22,7 +22,7 @@ public class AccountController {
 
 	@PostMapping("/get")
 	public AccountTO getAccount(@RequestBody AccountRequest request) {
-		return service.getCount(request);
+		return service.getAccount(request);
 	}
 
 
