@@ -25,7 +25,8 @@ public class PlayerService {
 
 	public List<Player> getPlayers(Integer id) {
 		List<PlayerDE> des = playerRepository.findByTeam(id);
-		return PlayerMapper.mapTOList(des);
+		PlayerDE overall = 	playerRepository.findByNameAndTeam("Overall", 1);
+		return PlayerMapper.mapTOList(des, overall);
 	}
 	@Transactional
 	public void deletePlayer(DeletePlayerRequest request) {
