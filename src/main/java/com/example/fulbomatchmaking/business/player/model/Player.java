@@ -1,5 +1,7 @@
 package com.example.fulbomatchmaking.business.player.model;
 
+import javax.persistence.Column;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -40,5 +42,12 @@ public class Player {
     private double overall;
     private double overallSmp;
     private Integer team;
+	private Boolean goalkeeper;
+	private float handling;
+	private float kicking;
+	private float positioning2;
+	private float diving;
+	private float reflex;
+	private float rejection;
 
 	}

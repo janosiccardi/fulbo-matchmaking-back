@@ -12,12 +12,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AccountTO{
-	private int id;
+	private Long id;
 	private String us;
 	private String pass;
 	private String nickname;
 	private Boolean smpMode;
-	private List<Team> teams;
+	private List<TeamTO> teams;
 	private List<Long> groups;
 
 }

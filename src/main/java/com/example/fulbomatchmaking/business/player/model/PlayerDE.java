@@ -79,6 +79,28 @@ public class PlayerDE implements Serializable {
 	private float technique;
 
 	@Column(name = "overall_smp")
-	private Double overallSmp;
+	private Double overallSmp;	
+	
+	@Column(name = "goalkeeper")
+	private Boolean goalkeeper;
+
+	@Column(name = "handling")
+	private float handling;
+
+	@Column(name = "kicking")
+	private float kicking;
+
+	@Column(name = "positioning2")
+	private float positioning2;
+
+	@Column(name = "diving")
+	private float diving;
+
+	@Column(name = "reflex")
+	private float reflex;
+
+	@Column(name = "rejection")
+	private float rejection;
+
 
 }

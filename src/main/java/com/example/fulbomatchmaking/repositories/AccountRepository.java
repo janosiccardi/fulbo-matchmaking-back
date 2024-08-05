@@ -11,7 +11,7 @@ import com.example.fulbomatchmaking.business.account.model.Account;
 
 
 @Repository
-public interface AccountRepository extends JpaRepository<Account, Integer>, JpaSpecificationExecutor<Account> {
+public interface AccountRepository extends JpaRepository<Account, Long>, JpaSpecificationExecutor<Account> {
 	Account findByUsAndPass(String us, String pass);
 
 	@Modifying(clearAutomatically = true)

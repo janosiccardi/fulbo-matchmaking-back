@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -27,9 +29,9 @@ public class Account implements Serializable {
 
 	private static final long serialVersionUID = 6094407212788597216L;
 
-	@Id
-	@Column(name = "id", nullable = false)
-	private Integer id;
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id")
+	private Long id;
 
 	@Column(name = "us")
 	private String us;

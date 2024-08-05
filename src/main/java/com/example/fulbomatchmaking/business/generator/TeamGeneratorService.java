@@ -85,15 +85,31 @@ public class TeamGeneratorService {
 		List<Player> group2 = players.stream().filter(z -> !group1.contains(z)).collect(Collectors.toList());
 		double group1Score = getAverage(group1, request.isSmpMode());
 		double group2Score = getAverage(group2, request.isSmpMode());
-		if (Math.abs(group1Score - group2Score) <= 1) {
+		if (Math.abs(group1Score - group2Score) < 1) {
 			combinations.put(group1, group2);
 		}
+	}
+
+	private int goalkeepers(List<Player> group) {
+		int  countGoalkeepers = 0;
+		for(Player player : group) {
+			if(player.getGoalkeeper() != null && player.getGoalkeeper()) {
+				countGoalkeepers ++;
+			}
+		}
+		return countGoalkeepers;
+	}
+	
+	private boolean equalGoalkeeper(List<Player> group1 ,List<Player> group2) {
+		int  countGoalkeepers1 = goalkeepers(group1);
+		int  countGoalkeepers2 =  goalkeepers(group2);		
+		return ( countGoalkeepers1 == 0 && countGoalkeepers2 == 0 ) || (countGoalkeepers1 == 1 && countGoalkeepers2 == 1 );
 	}
 
 	private double getAverage(List<Player> team, boolean smpMode) {
 		double total = 0;
 		for (Player player : team) {
-			total += smpMode ? player.getOverallSmp() : player.getOverall();
+			total += (smpMode ? player.getOverallSmp() : player.getOverall()) - (player.getGoalkeeper() ? 5 : 0);
 		}
 		return total / team.size();
 	}

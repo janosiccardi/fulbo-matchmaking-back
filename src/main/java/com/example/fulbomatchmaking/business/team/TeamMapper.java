@@ -9,21 +9,22 @@ import com.example.fulbomatchmaking.business.team.model.TeamTO;
 
 public class TeamMapper {
 
+
 	public static TeamTO mapTo(Team de) {
 		TeamTO to = new TeamTO();
 		to.setId(de.getId());
 		to.setName(de.getName());
-		List<Integer> users = new ArrayList<>();
+		List<Long> users = new ArrayList<>();
 		Arrays.asList(de.getAssociated_users().split(",")).stream().forEach(e->{
 			if(e != null && e.trim() != "") {
-				users.add(Integer.valueOf(e.trim()));
+				users.add(Integer.valueOf(e.trim()).longValue());
 			}
 		});
 		to.setAssociatedUsers(users);
-		List<Integer> admins = new ArrayList<>();
+		List<Long> admins = new ArrayList<>();
 		Arrays.asList(de.getAdmins().split(",")).stream().forEach(e->{
 			if(e != null && e.trim() != "") {
-				admins.add(Integer.valueOf(e.trim()));
+				admins.add(Integer.valueOf(e.trim()).longValue());
 			}
 		});
 		to.setAdmins(admins);
